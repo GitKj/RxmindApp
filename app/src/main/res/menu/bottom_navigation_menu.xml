@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/bnb_list"
+        android:enabled="true"
+        android:icon="@drawable/pill"
+        app:showAsAction="ifRoom"
+        android:visible="true"
+        android:title=""
+        android:onClick="onItemSelected"/>
+
+    <item
+        android:id="@+id/bnb_calendar"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title=""
+        android:visible="true"
+        android:onClick="onItemSelected">
+
+    </item>
+    <item
+        android:id="@+id/bnb_Search"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title=""
+        android:visible="true"
+        android:onClick="onItemSelected"/>
+</menu>
