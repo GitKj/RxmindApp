@@ -14,4 +14,5 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 V1
 -> Added basic UI and functionality to switch from login screen to the main frame of the application
-<img src=" " width=250>
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V1.gif" width=250>
+
