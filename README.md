@@ -18,7 +18,7 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 
 **V2 (7/4/2021)**
--> Added create reminder functionality (items need to be added to DB still). Added long click 
+-> Added most create reminder functionality (Need error checks, adding to DB, fix button bugs). Added long click 
 functionality on menu items so you get options to delete a reminder or update them
 <img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V2.gif" width=350>
 
