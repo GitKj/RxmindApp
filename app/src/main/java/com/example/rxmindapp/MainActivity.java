@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -29,9 +32,7 @@ import java.util.ArrayList;
         a. Possible way to implement this is by doing a long click option
    4. Work on calendar view
         a. There is a calendar widget
-   5. Work on calling FDC API to get simple pill information.
-   6. [IMPORTANT] Check to see if days and times are properly saved using a toast or something.
-
+   5. Work on calling FDA API to get simple pill information.
 
  */
 public class MainActivity extends AppCompatActivity {
@@ -140,6 +141,43 @@ public class MainActivity extends AppCompatActivity {
         // Populating the list view.
         lv.setAdapter(arrayAdapter);
 
+        // When we long click a list view item, a menu pops up
+        // Then we can use "itemID" to see if update or delete was clicked,
+        // and do corresponding actions
+        lv.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                //menu.setHeaderTitle("Choose an option");
+                menu.add(Menu.NONE, 0, 0, "Update");
+                menu.add(Menu.NONE, 1, 0, "Delete");
+
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        AdapterView.AdapterContextMenuInfo menuInfo;
+        menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int position;
+        switch (item.getItemId()) {
+
+            case 0:
+                position = (int) menuInfo.id;
+                String tempPillName = testObjects.get(position);
+                Toast.makeText(this, "Clicked Update on: " + tempPillName , Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                position = (int) menuInfo.id;
+                tempPillName = testObjects.get(position);
+                Toast.makeText(this, "Clicked Delete on: " + tempPillName , Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(this, "Error occured when selecting.", Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 
     public void createItem(View view)
