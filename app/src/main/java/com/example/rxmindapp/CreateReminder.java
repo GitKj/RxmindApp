@@ -20,7 +20,6 @@ public class CreateReminder extends AppCompatActivity {
     TimePickerDialog timePickerDialog;
     String amPM;
     User user;
-    Button btn_save;
     String timePicked;
 
     FirebaseDatabase database;
@@ -123,11 +122,6 @@ public class CreateReminder extends AppCompatActivity {
             userReminder.getPillDays().add("Sunday");
         }
 
-        if (numDaysSelected == 0)
-        {
-            Toast.makeText(this, "You must select days.", Toast.LENGTH_SHORT).show();
-            return;
-        }
         user.getUserReminders().add(userReminder);
 
 

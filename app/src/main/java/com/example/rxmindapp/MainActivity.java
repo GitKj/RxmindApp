@@ -33,6 +33,12 @@ import java.util.ArrayList;
    4. Work on calendar view
         a. There is a calendar widget
    5. Work on calling FDA API to get simple pill information.
+   6. Add "Back" button functionality in Create Reminder to go back to MainActivity
+   7. Properly save reminder info in firebase (please view methods in CreateReminder)
+
+@CURRENT BUGS:
+    1. When you click the "Save" button in the CreateReminder file, it crashes.
+    2. We need to do checks to make sure Create Reminder fields are not empty/null whatever.
 
  */
 public class MainActivity extends AppCompatActivity {
@@ -95,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user.getUserReminders() != null) {
                     currentUser.setUserReminders(user.getUserReminders());
                 } else {
-                    // Do nothing if there are no reminders to get.
+                    // Do nothing if there are no reminders to get(?).
                 }
             }
 
@@ -156,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // We need this to gather information on which items were clicked from the menu above.
     @Override
     public boolean onContextItemSelected(MenuItem item)
     {
@@ -165,11 +172,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case 0:
+                // When ready, we can add functionality to update the selected reminder.
                 position = (int) menuInfo.id;
                 String tempPillName = testObjects.get(position);
                 Toast.makeText(this, "Clicked Update on: " + tempPillName , Toast.LENGTH_SHORT).show();
                 break;
             case 1:
+                // When ready, we can add functionality to delete the item from firebase
                 position = (int) menuInfo.id;
                 tempPillName = testObjects.get(position);
                 Toast.makeText(this, "Clicked Delete on: " + tempPillName , Toast.LENGTH_SHORT).show();
@@ -182,9 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void createItem(View view)
     {
-        // When ready, we can change this toast so that when user clicks the FAB,
-        // it opens some sort of activity/dialog to add a new medication to the database.
-        Toast.makeText(this, "FAB clicked.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "FAB clicked.", Toast.LENGTH_SHORT).show();
         Intent goToCreateActivity = new Intent(this, CreateReminder.class);
         startActivity(goToCreateActivity);
     }
