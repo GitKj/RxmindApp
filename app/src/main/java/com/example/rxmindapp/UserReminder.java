@@ -1,17 +1,17 @@
 package com.example.rxmindapp;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 // This class is to track an individual users pills/medication && reminder
 public class UserReminder {
 
     private String pillName;
-    private String pillColor;
-    private String pillShape;
+    private String pillDescription;
     private String pillQuantity; // how many pills they need to take at time/day
 
-
-    private Date pillReminder;
+    private ArrayList<String> pillDays;
+    private String pillTime;
 
     public String getPillName() {
         return pillName;
@@ -19,22 +19,6 @@ public class UserReminder {
 
     public void setPillName(String pillName) {
         this.pillName = pillName;
-    }
-
-    public String getPillColor() {
-        return pillColor;
-    }
-
-    public void setPillColor(String pillColor) {
-        this.pillColor = pillColor;
-    }
-
-    public String getPillShape() {
-        return pillShape;
-    }
-
-    public void setPillShape(String pillShape) {
-        this.pillShape = pillShape;
     }
 
     public String getPillQuantity() {
@@ -45,11 +29,27 @@ public class UserReminder {
         this.pillQuantity = pillQuantity;
     }
 
-    public Date getPillReminder() {
-        return pillReminder;
+    public String getPillDescription() {
+        return pillDescription;
     }
 
-    public void setPillReminder(Date pillReminder) {
-        this.pillReminder = pillReminder;
+    public void setPillDescription(String pillDescription) {
+        this.pillDescription = pillDescription;
+    }
+
+    public ArrayList<String> getPillDays() {
+        return pillDays;
+    }
+
+    public void setPillDays(ArrayList<String> pillDays) {
+        this.pillDays = pillDays;
+    }
+
+    public String getPillTime() {
+        return pillTime;
+    }
+
+    public void setPillTime(String pillTime) {
+        this.pillTime = pillTime;
     }
 }

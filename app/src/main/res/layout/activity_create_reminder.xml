@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B7E4EA"
+        android:orientation="vertical"
+        tools:context=".CreateReminder">
+
+
+        <TextView
+            android:id="@+id/tv_createTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="40dp"
+            android:text="Add a New Reminder!"
+            android:textSize="24sp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/tv_pillName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:text="Pill Name:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_pillName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-38dp"
+            android:ems="10"
+            android:hint="enter name here"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tv_pillAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="How many:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_pillAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-38dp"
+            android:ems="10"
+            android:hint="enter # of pills needed"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_pillDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="How often?"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cb_Monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-35dp"
+            android:text="Monday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-15dp"
+            android:text="Tuesday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-15dp"
+            android:text="Wednesday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-15dp"
+            android:text="Thursday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="-148dp"
+            android:text="Friday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="-15dp"
+            android:text="Saturday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="-15dp"
+            android:text="Sunday's" />
+
+        <CheckBox
+            android:id="@+id/cb_Everyday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="-15dp"
+            android:text="Everyday" />
+
+        <TextView
+            android:id="@+id/tv_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="What time?"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_Time"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-38dp" />
+
+        <TextView
+            android:id="@+id/tv_Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Description:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-38dp"
+            android:ems="10"
+            android:hint="Describe the pill here."
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btn_Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#00BCD4"
+            android:onClick="saveReminder"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/btn_Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="-48dp"
+            android:backgroundTint="#00BCD4"
+            android:text="Back" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ScrollView>
