@@ -4,8 +4,8 @@
 Rxmind is a fast way to receive reminders directly on your phone about any medications you need to take. Rxmind allows users to log in, add medications and any descriptors (i.e: Name, Color, Shape), and specify the time/and or date that you should be reminded to take your medication!
 
 # Features:
-- [ ] Ability to create an account and log in
-- [ ] Add, Delete, and Update reminders/medications
+- [x] Ability to create an account and log in
+- [x] Add, Delete, and Update reminders/medications
 - [ ] Ability to search a pill and see the description using the FDA API
 - [ ] Ability to see a calendar view of upcoming medication reminders
 
@@ -21,5 +21,21 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 -> Added most create reminder functionality (Need error checks, adding to DB, fix button bugs). Added long click 
 functionality on menu items so you get options to delete a reminder or update them
 <img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V2.gif" width=350>
+
+**V3 (7/11/2021)**
+1. Fixed up UI just a bit
+2. Connected firebase realtime database to the project
+3. Created log in and registration functionality with email and password
+4. Now, instead of "object 1", "object 2" etc, users main page will now showcase their respective reminders.
+5. Completed "update" and "delete" functionality for reminders
+
+@TODO:
+1. Fix UI to be more user friendly
+2. Work on calendar event
+3. Work on calling the FDA API
+
+<img src="" width=350>
+
+
 
 
