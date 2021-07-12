@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274035137037",
+    "project_id": "rxmind-5c21a",
+    "storage_bucket": "rxmind-5c21a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274035137037:android:8583fcae845469fb435344",
+        "android_client_info": {
+          "package_name": "com.example.rxmindapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274035137037-k90mqf6pcf6dvubhqam78803g1po0oiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJK4UyOpz1b88AV83DYJzt4fuK3AvrW8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274035137037-k90mqf6pcf6dvubhqam78803g1po0oiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

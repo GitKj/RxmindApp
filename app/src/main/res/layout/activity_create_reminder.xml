@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_create"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".CreateReminder"
->
+    tools:context=".CreateReminder">
 
     <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#B7E4EA"
@@ -23,15 +23,38 @@
             android:layout_marginStart="55dp"
             android:layout_marginTop="40dp"
             android:text="Add a New Reminder!"
+            android:textColor="#000000"
             android:textSize="24sp"
             android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/tv_Nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:text="Nickname:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-23dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+            android:hint="enter nickname here"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
 
         <TextView
             android:id="@+id/tv_pillName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:text="Pill Name:"
             android:textSize="18sp" />
 
@@ -40,10 +63,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="-38dp"
+            android:layout_marginTop="-45dp"
+            android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="enter name here"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
 
         <TextView
             android:id="@+id/tv_pillAmount"
@@ -51,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:text="How many:"
             android:textSize="18sp" />
 
@@ -59,10 +85,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="-38dp"
+            android:layout_marginTop="-45dp"
+            android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="enter # of pills needed"
-            android:inputType="number" />
+            android:inputType="number"
+            android:paddingLeft="10dp" />
 
         <TextView
             android:id="@+id/tv_pillDate"
@@ -79,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="-35dp"
+            android:onClick="onCheckboxClicked"
             android:text="Monday's" />
 
         <CheckBox
@@ -87,6 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="-15dp"
+            android:onClick="onCheckboxClicked"
             android:text="Tuesday's" />
 
         <CheckBox
@@ -95,6 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="-15dp"
+            android:onClick="onCheckboxClicked"
             android:text="Wednesday's" />
 
         <CheckBox
@@ -103,6 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="-15dp"
+            android:onClick="onCheckboxClicked"
             android:text="Thursday's" />
 
         <CheckBox
@@ -111,6 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="240dp"
             android:layout_marginTop="-148dp"
+            android:onClick="onCheckboxClicked"
             android:text="Friday's" />
 
         <CheckBox
@@ -119,6 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="240dp"
             android:layout_marginTop="-15dp"
+            android:onClick="onCheckboxClicked"
             android:text="Saturday's" />
 
         <CheckBox
@@ -127,6 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="240dp"
             android:layout_marginTop="-15dp"
+            android:onClick="onCheckboxClicked"
             android:text="Sunday's" />
 
         <CheckBox
@@ -135,6 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="240dp"
             android:layout_marginTop="-15dp"
+            android:onClick="onCheckboxClicked"
             android:text="Everyday" />
 
         <TextView
@@ -143,6 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:text="What time?"
             android:textSize="18sp" />
 
@@ -151,7 +188,9 @@
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="-38dp" />
+            android:layout_marginTop="-45dp"
+            android:background="@drawable/edit_text_border"
+            android:paddingLeft="10dp" />
 
         <TextView
             android:id="@+id/tv_Description"
@@ -167,10 +206,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="-38dp"
+            android:layout_marginTop="-25dp"
+            android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="Describe the pill here."
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:singleLine="false" />
 
         <Button
             android:id="@+id/btn_Save"
@@ -179,7 +221,7 @@
             android:layout_marginStart="170dp"
             android:layout_marginTop="30dp"
             android:backgroundTint="#00BCD4"
-            android:onClick="saveReminder"
+
             android:text="Save" />
 
         <Button
@@ -193,17 +235,6 @@
 
 
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </ScrollView>

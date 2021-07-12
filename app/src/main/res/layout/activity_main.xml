@@ -7,23 +7,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="false">
 
     <ListView
         android:id="@+id/list_medication"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
 
     </ListView>
-
-    <!--
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-       android:id="@+id/bottomNavigationView"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_marginEnd="16dp"
-       android:background="@android:color/transparent"
-       app:menu="@menu/bottom_navigation_menu" /> -->
 
 
     <com.google.android.material.bottomappbar.BottomAppBar

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 // we need a class for users, each user will have a List of their own personal reminders
 // we implement serializable to allow for passing objects between activities
 // we pass a user object when going from login screen to the main activity so we know who is logged in.
+
+
+// UPDATE 7/11: Might delete this class lol
 public class User implements Serializable {
 
     private ArrayList<UserReminder> userReminders;
