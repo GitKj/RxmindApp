@@ -34,7 +34,7 @@ functionality on menu items so you get options to delete a reminder or update th
 2. Work on calendar event
 3. Work on calling the FDA API
 
-<img src="" width=350>
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V3.gif" width=350>
 
 
 
