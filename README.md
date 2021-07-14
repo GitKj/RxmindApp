@@ -12,17 +12,17 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 # Current Progress of the app
 
-**V1 (7/3/2021)**
+**V1 (7/3/2021)** By: Kajoyrie Purcell
 -> Added basic UI and functionality to switch from login screen to the main frame of the application
 <img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V1.gif" width=350>
 
 
-**V2 (7/4/2021)**
+**V2 (7/4/2021)** By: Kajoyrie Purcell
 -> Added most create reminder functionality (Need error checks, adding to DB, fix button bugs). Added long click 
 functionality on menu items so you get options to delete a reminder or update them
 <img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V2.gif" width=350>
 
-**V3 (7/11/2021)**
+**V3 (7/11/2021)** By: Kajoyrie Purcell
 1. Fixed up UI just a bit
 2. Connected firebase realtime database to the project
 3. Created log in and registration functionality with email and password
