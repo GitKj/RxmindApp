@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -40,35 +41,37 @@ public class calendarView extends AppCompatActivity {
     public void getPillOnDay(int day)
     {
         String dayOfWeek ="";
-        if (day == 0)
+
+        if (day == 1)
         {
-            dayOfWeek = "sunday";
-        }
-        else if (day == 1)
-        {
-            dayOfWeek = "monday";
+            dayOfWeek = "Sun";
         }
         else if (day == 2)
         {
-            dayOfWeek = "tuesday";
+            dayOfWeek = "Monday";
         }
         else if (day == 3)
         {
-            dayOfWeek = "wednesday";
+            dayOfWeek = "Tuesday";
         }
         else if (day == 4)
         {
-            dayOfWeek = "thursday";
+            dayOfWeek = "Wednesday";
         }
         else if (day == 5)
         {
-            dayOfWeek = "friday";
+            dayOfWeek = "Thursday";
         }
         else if (day == 6)
         {
-            dayOfWeek = "saturday";
+            dayOfWeek = "Friday";
+        }
+        else if (day == 7)
+        {
+            dayOfWeek = "Sat";
         }
 
+        //Toast.makeText(this, "Day clicked: " + day, Toast.LENGTH_SHORT).show();
         Intent switchToListView = new Intent(calendarView.this, calendarList.class);
         switchToListView.putExtra("day", dayOfWeek);
         switchToListView.putExtra("currUser", currUser);

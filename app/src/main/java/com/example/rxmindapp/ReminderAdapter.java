@@ -1,6 +1,7 @@
 package com.example.rxmindapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 // This also lets us personally customize each row of our list view so we can show/hide specific pill information for users.
 
 
-// **This class should not need to be touched anymore**.
+//
 
 public class ReminderAdapter extends BaseAdapter {
 
@@ -57,6 +58,14 @@ public class ReminderAdapter extends BaseAdapter {
             holder.quantity = (TextView) convertView.findViewById(R.id.tv_PA);
             holder.time = (TextView) convertView.findViewById(R.id.tv_PT);
             holder.description = (TextView) convertView.findViewById(R.id.tv_PD);
+            holder.monday = (TextView) convertView.findViewById(R.id.tv_Monday);
+            holder.tues = (TextView) convertView.findViewById(R.id.tv_Tues);
+            holder.wed = (TextView) convertView.findViewById(R.id.tv_Wed);
+            holder.thu = (TextView) convertView.findViewById(R.id.tv_TH);
+            holder.fri = (TextView) convertView.findViewById(R.id.tv_Fri);
+            holder.sat = (TextView) convertView.findViewById(R.id.tv_Sa);
+            holder.sun = (TextView) convertView.findViewById(R.id.tv_Su);
+
             convertView.setTag(holder);
         }
         else
@@ -67,8 +76,37 @@ public class ReminderAdapter extends BaseAdapter {
         UserReminder reminder = reminders.get(position);
         holder.pillName.setText(reminder.getPillName());
         holder.time.setText(reminder.getPillTime());
-        holder.quantity.setText(reminder.getPillQuantity());
+        holder.quantity.setText("Qnt: " + reminder.getPillQuantity());
         holder.description.setText(reminder.getPillDescription());
+
+        if (reminder.isTakeOnMonday())
+        {
+            holder.monday.setTextColor(Color.GREEN);
+        }
+        if (reminder.isTakeOnTuesday())
+        {
+            holder.tues.setTextColor(Color.GREEN);
+        }
+        if (reminder.isTakeOnWednesday())
+        {
+            holder.wed.setTextColor(Color.GREEN);
+        }
+        if (reminder.isTakeOnThursday())
+        {
+            holder.thu.setTextColor(Color.GREEN);
+        }
+        if (reminder.isTakeOnFriday())
+        {
+            holder.fri.setTextColor(Color.GREEN);
+        }
+        if (reminder.isTakeOnSat())
+        {
+            holder.sat.setTextColor(Color.GREEN);
+        }
+        if (reminder.isTakeOnSun())
+        {
+            holder.sun.setTextColor(Color.GREEN);
+        }
 
         return convertView;
     }
@@ -77,8 +115,14 @@ public class ReminderAdapter extends BaseAdapter {
     {
         TextView pillName;
         TextView time;
-        TextView days;
         TextView quantity;
         TextView description;
+        TextView monday;
+        TextView tues;
+        TextView wed;
+        TextView thu;
+        TextView fri;
+        TextView sat;
+        TextView sun;
     }
 }

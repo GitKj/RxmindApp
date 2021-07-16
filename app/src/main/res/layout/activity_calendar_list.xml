@@ -8,6 +8,17 @@
     tools:context=".calendarList"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_CLTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:text="Pills you take on"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:typeface="monospace" />
+
     <ListView
         android:id="@+id/lv_pills"
         android:layout_width="fill_parent"

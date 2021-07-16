@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,8 +28,9 @@ public class calendarList extends AppCompatActivity {
 
     ListView lv;
 
-    //ArrayList<UserReminder> reminders;
-    ArrayList<String> pillNames;
+    TextView tv_Title;
+
+    ArrayList<UserReminder> reminders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +41,32 @@ public class calendarList extends AppCompatActivity {
         day = getIntent().getStringExtra("day");
 
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference().child("Users").child(currUser).child(day);
+        ref = database.getReference().child("Users").child(currUser).child("Reminders");
 
         lv = (ListView) findViewById(R.id.lv_pills);
 
-        pillNames = new ArrayList<>();
+        tv_Title = findViewById(R.id.tv_CLTitle);
+        tv_Title.setText("The pills you take on " + day);
+
+        reminders = new ArrayList<>();
+        ReminderAdapter reminderAdapter = new ReminderAdapter(reminders, this);
+        lv.setAdapter(reminderAdapter);
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                reminders.clear();
                 for (DataSnapshot ds : snapshot.getChildren())
                 {
-                    // Should add the list of pills to the array
-                    pillNames.add(ds.getValue(String.class));
+                    String days = "takeOn" + day;
+                    boolean clickedDay = ds.child(days).getValue(Boolean.class);
+
+                    if (clickedDay)
+                    {
+                        UserReminder reminder = ds.getValue(UserReminder.class);
+                        reminders.add(reminder);
+                        reminderAdapter.notifyDataSetChanged();
+                    }
                 }
             }
 
@@ -59,11 +75,6 @@ public class calendarList extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pillNames);
-
-        lv.setAdapter(adapter);
-
-
 
     }
 }

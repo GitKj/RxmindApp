@@ -26,13 +26,12 @@ import java.util.ArrayList;
 
 /*
 @TODO:
-    2. Work on ability to update reminders [DONE]
-   3. Work on ability to delete reminders [DONE]
-   4. Work on calendar view
-        a. There is a calendar widget
-   5. Work on calling FDA API to get simple pill information.
-   6. Work on error handling and also limiting # of characters allowed when user is creating a new reminder
-   7. Make the list view prettier lol
+
+   1. Work on calling FDA API to get simple pill information.
+   2. Work on error handling and also limiting # of characters allowed when user is creating a new reminder
+   3. Add some colors to the list view
+   4. Add better icons and things
+   5. Add a back button to the calendar view
 
 @CURRENT BUGS:
 
@@ -42,7 +41,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ListView lv;
-    ArrayList<String> testObjects = new ArrayList<String>();
     FloatingActionButton fab;
     BottomAppBar bottomAppBar;
     private User currentUser;
@@ -79,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         ReminderAdapter reminderAdapter = new ReminderAdapter(reminders, this);
         lv.setAdapter(reminderAdapter);
 
+        // Below, we're getting an updated list of all the reminders
+        // for the current logged in user
         ref.child("Reminders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -14,10 +14,11 @@
         android:fontFamily="sans-serif-black"
         android:text="Advil"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="30sp" />
+
 
     <TextView
-        android:id="@+id/tv_PD"
+        android:id="@+id/tv_PT"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -25,116 +26,128 @@
         android:paddingBottom="10dp"
         android:text="It's small and blue."
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
+
 
     <TextView
         android:id="@+id/tv_PA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="-45dp"
+        android:layout_marginTop="-60dp"
         android:layout_marginRight="38dp"
         android:paddingBottom="10dp"
         android:text="Take 6"
         android:textColor="#514F4F"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/iv_row_clock"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="45dp"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
     <TextView
-        android:id="@+id/tv_PT"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="-25dp"
+        android:layout_marginTop="-32dp"
         android:text="4:45AM"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="-28dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="-35dp"
         app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     <TextView
         android:id="@+id/tv_Monday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="-32dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="-34dp"
         android:text="M"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_Tues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="207dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="-24dp"
         android:text="T"
-        android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textColor="#D81515"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_Wed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginLeft="255dp"
+        android:layout_marginTop="-24dp"
         android:text="W"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_TH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="237dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginLeft="277dp"
+        android:layout_marginTop="-24dp"
         android:text="TH"
-        android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textColor="#CA1414"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_Fri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="261dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginLeft="307dp"
+        android:layout_marginTop="-25dp"
         android:text="F"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_Sa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="273dp"
-        android:layout_marginTop="-19dp"
-        android:layout_marginRight="0dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="-24dp"
+        android:layout_marginRight="66dp"
         android:text="Sa"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_Su"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="294dp"
-        android:layout_marginTop="-19dp"
-        android:layout_marginRight="0dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="-24dp"
+        android:layout_marginRight="40dp"
         android:text="Su"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
+
+    <!--
+
+    <TextView
+        android:id="@+id/tv_PD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="description"
+        android:textColor="@color/black"
+        android:textSize="16sp" /> -->
 
 </LinearLayout>
