@@ -37,5 +37,16 @@ functionality on menu items so you get options to delete a reminder or update th
 <img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V3.gif" width=350>
 
 
+**V4 (7/15/2021)** By: Kajoyrie Purcell
+1. Made UI more user friendly by adjusting font size, type and color, and adding icons.
+2. Implemented Calendar List feature
+  a. When user clicks a day in the calendar, they will be taken to a page where it lists all the medication they need to take that day.
+  
+@TODO for V5
+1. Continue adjusting UI to be more user friendly
+2. Work on calling FDA API
+
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V4.gif" width=350>
+
 
 
