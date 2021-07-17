@@ -12,19 +12,19 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 # Current Progress of the app
 
-**V1 (7/3/2021)** By: Kajoyrie Purcell
-1. Added basic UI and functionality to switch from login screen to the main frame of the application
-<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V1.gif" width=350>
+
+**V4 (7/15/2021)** By: Kajoyrie Purcell
+1. Made UI more user friendly by adjusting font size, type and color, and adding icons.
+2. Implemented Calendar List feature so when user clicks a day in the calendar, they will be taken to a page where it lists all the medication they need to take that day.
+  
+@TODO for V5
+1. Continue adjusting UI to be more user friendly
+2. Work on calling FDA API
+
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V4.gif" width=350>
 
 --------------------------------------------------------------------------------------------------------
 
-
-**V2 (7/4/2021)** By: Kajoyrie Purcell
-1. Added most create reminder functionality (Need error checks, adding to DB, fix button bugs). 
-2. Added long click functionality on menu items so you get options to delete a reminder or update them
-<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V2.gif" width=350>
-
---------------------------------------------------------------------------------------------------------
 
 **V3 (7/11/2021)** By: Kajoyrie Purcell
 1. Fixed up UI just a bit
@@ -43,17 +43,24 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 --------------------------------------------------------------------------------------------------------
 
 
-**V4 (7/15/2021)** By: Kajoyrie Purcell
-1. Made UI more user friendly by adjusting font size, type and color, and adding icons.
-2. Implemented Calendar List feature so when user clicks a day in the calendar, they will be taken to a page where it lists all the medication they need to take that day.
-  
-@TODO for V5
-1. Continue adjusting UI to be more user friendly
-2. Work on calling FDA API
+**V2 (7/4/2021)** By: Kajoyrie Purcell
+1. Added most create reminder functionality (Need error checks, adding to DB, fix button bugs). 
+2. Added long click functionality on menu items so you get options to delete a reminder or update them
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V2.gif" width=350>
 
-<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V4.gif" width=350>
 
 --------------------------------------------------------------------------------------------------------
+
+
+
+**V1 (7/3/2021)** By: Kajoyrie Purcell
+1. Added basic UI and functionality to switch from login screen to the main frame of the application
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V1.gif" width=350>
+
+--------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
