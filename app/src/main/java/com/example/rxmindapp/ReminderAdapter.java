@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -65,6 +68,7 @@ public class ReminderAdapter extends BaseAdapter {
             holder.fri = (TextView) convertView.findViewById(R.id.tv_Fri);
             holder.sat = (TextView) convertView.findViewById(R.id.tv_Sa);
             holder.sun = (TextView) convertView.findViewById(R.id.tv_Su);
+            holder.pillImage = (ImageView) convertView.findViewById(R.id.iv_PillImage);
 
             convertView.setTag(holder);
         }
@@ -108,11 +112,21 @@ public class ReminderAdapter extends BaseAdapter {
             holder.sun.setTextColor(Color.GREEN);
         }
 
+        //image handling logic
+        if(!reminder.getPillImageURL().equals("")){ // leaves default if no associated image URL
+            Picasso.get()
+                    .load(reminder.getPillImageURL())
+                    .resize(64,64)
+                    .centerCrop()
+                    .into(holder.pillImage);
+        }
+
         return convertView;
     }
 
     private static class ViewHolder
     {
+        public ImageView pillImage;
         TextView pillName;
         TextView time;
         TextView quantity;
