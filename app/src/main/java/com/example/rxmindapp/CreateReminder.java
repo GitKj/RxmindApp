@@ -218,8 +218,7 @@ public class CreateReminder extends AppCompatActivity {
         String description = et_description.getText().toString();
 
         //Toast.makeText(this, "Testing null/empty: " + pillName, Toast.LENGTH_SHORT).show();
-        if (pillAmnt == null || pillName == null || nickname == null || timePicked == null || description == null ||
-        pillName.equals("") || nickname.equals(""))
+        if (pillAmnt.equals("") || pillName.equals("") || nickname.equals("") || timePicked == null || description.equals(""))
         {
             Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
             return;
@@ -327,8 +326,7 @@ public class CreateReminder extends AppCompatActivity {
                 String pillName = et_pill.getText().toString();
                 String description = et_description.getText().toString();
 
-                if (pillAmnt == null || pillName == null ||  timePicked == null || description == null ||
-                        pillName.equals("") )
+                if (pillAmnt.equals("") || pillName.equals("") ||  timePicked == null || description.equals(""))
                 {
                     Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
                     return;
@@ -391,6 +389,7 @@ public class CreateReminder extends AppCompatActivity {
     public void goToMainActivity()
     {
         Intent goToMainActivity = new Intent(this, MainActivity.class);
+        goToMainActivity.putExtra("currUser", currUser);
         startActivity(goToMainActivity);
         finish();
     }

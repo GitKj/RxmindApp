@@ -153,9 +153,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void createItem(View view)
     {
-        Intent goToCreateActivity = new Intent(this, CreateReminder.class);
-        goToCreateActivity.putExtra("currUser", currUsername);
-        startActivity(goToCreateActivity);
+        Intent goToSearchActivity = new Intent(this, SearchActivity.class);
+        goToSearchActivity.putExtra("currUser", currUsername);
+        goToSearchActivity.putExtra("create", true);
+        startActivity(goToSearchActivity);
     }
 
     public void onItemSelected(MenuItem item)
@@ -175,7 +176,13 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.bnb_Search:
-                Toast.makeText(this, "Search tab checked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Search tab checked.", Toast.LENGTH_SHORT).show();
+                Intent goToSearchActivity = new Intent(this, SearchActivity.class);
+                goToSearchActivity.putExtra("currUser", currUsername);
+                goToSearchActivity.putExtra("create", false);
+                startActivity(goToSearchActivity);
+                finish();
+
                 break;
             default:
                 break;
