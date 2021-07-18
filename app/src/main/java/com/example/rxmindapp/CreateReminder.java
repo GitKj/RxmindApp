@@ -149,6 +149,22 @@ public class CreateReminder extends AppCompatActivity {
             updating = true;
             updateReminder();
         }
+
+        if(getIntent().getStringExtra("name") != null){
+            et_pill.setText(getIntent().getStringExtra("name"));
+        }
+        StringBuilder sb = new StringBuilder();
+
+        if(getIntent().getStringExtra("imprint") != null){
+            sb.append(" Imprint: " + getIntent().getStringExtra("imprint"));
+        }
+        if(getIntent().getStringExtra("size") != null){
+            sb.append(" Size: " + getIntent().getStringExtra("size"));
+        }
+        if(getIntent().getStringExtra("color") != null){
+            sb.append(" Color: " + getIntent().getStringExtra("color"));
+        }
+        et_description.setText(sb.toString());
     }
 
     public void onCheckboxClicked(View view)
@@ -239,6 +255,7 @@ public class CreateReminder extends AppCompatActivity {
                     userReminder.setPillTime(timePicked);
                     userReminder.setPillDescription(description);
                     userReminder.setPillNickname(nickname);
+                    if(getIntent().getStringExtra("url") != null) userReminder.setPillImageURL(getIntent().getStringExtra("url"));
 
 
                     if (monday) {
@@ -271,6 +288,9 @@ public class CreateReminder extends AppCompatActivity {
                         ref.child(nickname).setValue(userReminder);
                     }
                     Toast.makeText(getApplicationContext(), "Saved successfully!", Toast.LENGTH_SHORT).show();
+                    Intent goToMainActivity = new Intent(CreateReminder.this, MainActivity.class);
+                    goToMainActivity.putExtra("currUser", currUser);
+                    startActivity(goToMainActivity);
                     finish();
                 }
 
@@ -372,6 +392,9 @@ public class CreateReminder extends AppCompatActivity {
                             ref.child(user.getPillNickname()).child("takeOnSun").setValue(true);
                         }
                         Toast.makeText(getApplicationContext(), "Saved successfully!", Toast.LENGTH_SHORT).show();
+                        Intent goToMainActivity = new Intent(CreateReminder.this, MainActivity.class);
+                        goToMainActivity.putExtra("currUser", currUser);
+                        startActivity(goToMainActivity);
                         finish();
                     }
 

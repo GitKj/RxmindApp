@@ -1,36 +1,35 @@
 package com.example.rxmindapp;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import java.util.List;
+import javax.annotation.Generated;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.Date;
-
+@Generated("jsonschema2pojo")
 public class APIResponse {
-    Status received = new Status();
-    ArrayList<Result> nlmRxImages;
 
-    public APIResponse(){
+    @SerializedName("replyStatus")
+    @Expose
+    private ReplyStatus replyStatus;
+    @SerializedName("nlmRxImages")
+    @Expose
+    private List<NlmRxImage> nlmRxImages = null;
 
-
+    public ReplyStatus getReplyStatus() {
+        return replyStatus;
     }
 
-
-
-
-    public class Status{
-
-        Boolean success = false;
-        String date;
-        int imageCount = 0;
-        int totalImageCount;
-        JsonArray matchedTerms;
-
-        public Status(){
-
-        }
-
+    public void setReplyStatus(ReplyStatus replyStatus) {
+        this.replyStatus = replyStatus;
     }
+
+    public List<NlmRxImage> getNlmRxImages() {
+        return nlmRxImages;
+    }
+
+    public void setNlmRxImages(List<NlmRxImage> nlmRxImages) {
+        this.nlmRxImages = nlmRxImages;
+    }
+
 }
-
 

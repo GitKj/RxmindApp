@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class ResultAdapter extends BaseAdapter {
 
-    public ArrayList<Result> results;
+    public ArrayList<NlmRxImage> results;
     private Context context;
 
-    public ResultAdapter(ArrayList<Result> results, Context context){
+    public ResultAdapter(ArrayList<NlmRxImage> results, Context context){
         this.results = results;
         this.context = context;
     }
@@ -52,7 +52,7 @@ public class ResultAdapter extends BaseAdapter {
             holder = new ResultAdapter.ViewHolder();
             holder.resultName = convertView.findViewById(R.id.tv_resultName);
 
-            holder.resultName = convertView.findViewById(R.id.iv_resultImage);
+            holder.resultImage = convertView.findViewById(R.id.iv_resultImage);
 
             convertView.setTag(holder);
         }
@@ -61,15 +61,15 @@ public class ResultAdapter extends BaseAdapter {
             holder = (ResultAdapter.ViewHolder) convertView.getTag();
         }
 
-        Result result = results.get(position);
-        holder.resultName.setText(result.name);
+        NlmRxImage result = results.get(position);
+        holder.resultName.setText(result.getName());
 
-        Log.i("res", "name = " + result.name);
+        Log.i("res", "name = " + result.getName());
 
         //image handling logic
-        if(!result.imageUrl.equals("")){ // leaves default if no associated image URL
+        if(!result.getImageUrl().equals("")){ // leaves default if no associated image URL
             Picasso.get()
-                    .load(result.imageUrl)
+                    .load(result.getImageUrl())
                     .resize(240,240)
                     .centerCrop()
                     .into(holder.resultImage);

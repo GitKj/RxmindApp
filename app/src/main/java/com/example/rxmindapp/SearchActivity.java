@@ -22,7 +22,16 @@ import com.androidnetworking.common.ANRequest;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.common.RequestBuilder;
 import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -45,14 +54,14 @@ public class SearchActivity extends AppCompatActivity {
     LinearLayout buttonTray;
     Button back;
     Button skip;
-    Button add;
 
 
-    private boolean creating = false;
+    private boolean creating;
 
-    public ArrayList<Result> searchResults;
+    APIResponse subject;
+    public ArrayList<NlmRxImage> searchResults;
     ListView lv;
-    UserReminder user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,39 +79,40 @@ public class SearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean nameEmpty = name.getText().equals("");
-                Boolean colorEmpty = color.getText().equals("");
-                Boolean shapeEmpty = shape.getText().equals("");
-                Boolean imprintEmpty = imprint.getText().equals("");
-                if(nameEmpty && colorEmpty && shapeEmpty && colorEmpty && imprintEmpty) {
+                String pillName = name.getText().toString();
+                String pillColor = color.getText().toString();
+                String pillImprint = imprint.getText().toString();
+
+                if (pillColor.equals("") || pillName.equals("") || pillImprint.equals(""))
+                {
+                    Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 StringBuilder sb = new StringBuilder();
-                if(!nameEmpty) sb.append("name=");
+                sb.append("name=");
                 sb.append(name.getText());
-                if(!nameEmpty && !colorEmpty) sb.append("&");
-                if(!colorEmpty) sb.append("color=");
+                sb.append("&");
+                sb.append("color=");
                 sb.append(color.getText());
-                //if(!nameEmpty && !shapeEmpty) sb.append("&");
-                //if(!shapeEmpty) sb.append("shape=");
-                //sb.append(shape.getText());
-                if(!nameEmpty && !imprintEmpty) sb.append("&");
-                if(!imprintEmpty) sb.append("imprint=");
+                sb.append("&");
+                sb.append("imprint=");
                 sb.append(imprint.getText());
                 String requestString = sb.toString();
 
                 Log.i("req", "requestString = " + requestString);
                 makeRequest(requestString);
+
+                Log.i("res", "Size: " + searchResults.size());
+                ResultAdapter resultAdapter = new ResultAdapter(searchResults, SearchActivity.this);
+                lv.setAdapter(resultAdapter);
             }
         });
 
         buttonTray = (LinearLayout) findViewById(R.id.ll_ButtonTray);
+        skip = findViewById(R.id.btn_Skip);
         creating = (Boolean) getIntent().getBooleanExtra("create", false);
         if(creating){
-            //set the properties for button
 
-            skip = new Button(this);
-            skip.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             skip.setText("Skip Search");
             skip.setId(View.generateViewId());
             skip.setOnClickListener(new View.OnClickListener() {
@@ -111,25 +121,7 @@ public class SearchActivity extends AppCompatActivity {
                     SkipToCreateReminder();
                 }
             });
-
-            //add button to the layout
-            buttonTray.addView(skip);
-
-            add = new Button(this);
-            add.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            add.setText("Add Pill");
-            add.setId(View.generateViewId());
-            add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SkipToCreateReminder();
-                }
-            });
-
-            //add button to the layout
-            buttonTray.addView(add);
-
-        }
+        } else skip.setVisibility(View.INVISIBLE);
 
         back = (Button) findViewById(R.id.btn_Back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -166,15 +158,19 @@ public class SearchActivity extends AppCompatActivity {
 
                 position = (int) menuInfo.id;
 
-                Result result = searchResults.get(position);
+                NlmRxImage result = searchResults.get(position);
 
 
-                //Intent goToCreateActivity = new Intent(this, CreateReminder.class);
-                //goToCreateActivity.putExtra("update", reminder);
-                //goToCreateActivity.putExtra("currUser", currUsername);
-                //startActivity(goToCreateActivity);
+                Intent goToCreateActivity = new Intent(this, CreateReminder.class);
+                goToCreateActivity.putExtra("name", result.getName());
+                goToCreateActivity.putExtra("imprint", imprint.getText());
+                goToCreateActivity.putExtra("color", color.getText());
+                goToCreateActivity.putExtra("url", result.getImageUrl());
 
-                Toast.makeText(this, result.name, Toast.LENGTH_SHORT).show();
+                goToCreateActivity.putExtra("currUser", currUser);
+                startActivity(goToCreateActivity);
+
+
                 break;
         }
         return true;
@@ -190,14 +186,17 @@ public class SearchActivity extends AppCompatActivity {
                 .addPathParameter("resource", input)
                 .setPriority(Priority.LOW)
                 .build();
-        req.getAsObject(APIResponse.class, new ParsedRequestListener<APIResponse>() {
+        req.getAsJSONObject(new JSONObjectRequestListener() {
             @Override
-            public void onResponse(APIResponse response) {
-                searchResults = response.nlmRxImages;
-                Log.i("response", "Success = " + response.received.success.toString());
-                Log.i("response", "Imagecount = " + response.received.imageCount);
+            public void onResponse(JSONObject response) {
+                String jobj = response.toString();
+                final Gson gson = new GsonBuilder().registerTypeAdapter(APIResponse.class, new APIResponseDeserializer()).create();
+                subject = gson.fromJson(jobj, APIResponse.class);
 
+                searchResults = new ArrayList<>(subject.getNlmRxImages());
+                if(searchResults.size() == 0) Toast.makeText(getApplicationContext(), "No results found", Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onError(ANError error) {
                 if (error.getErrorCode() != 0) {
