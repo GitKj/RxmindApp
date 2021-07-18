@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sv_create"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     android:fillViewport="true"
     tools:context=".CreateReminder">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,221 +21,310 @@
             android:id="@+id/tv_createTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
             android:text="Add a New Reminder!"
+            android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="#000000"
             android:textSize="24sp"
-            android:typeface="monospace" />
+            android:typeface="monospace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_conversion_absoluteHeight="32dp"
+            tools:layout_conversion_absoluteWidth="411dp" />
 
         <TextView
             android:id="@+id/tv_Nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
             android:text="Nickname:"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_createTitle"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="85dp" />
 
         <EditText
             android:id="@+id/et_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-23dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="64dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="enter nickname here"
             android:inputType="textPersonName"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_createTitle"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="210dp" />
 
         <TextView
             android:id="@+id/tv_pillName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:text="Pill Name:"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Nickname"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="81dp" />
 
         <EditText
             android:id="@+id/et_pillName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-45dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="enter name here"
             android:inputType="textPersonName"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_nickname"
+            app:layout_constraintTop_toBottomOf="@+id/et_nickname"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="210dp" />
 
         <TextView
             android:id="@+id/tv_pillAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:text="How many:"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pillName"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="89dp" />
 
         <EditText
             android:id="@+id/et_pillAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-45dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="enter # of pills needed"
             android:inputType="number"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_pillName"
+            app:layout_constraintTop_toBottomOf="@+id/et_pillName"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="210dp" />
 
         <TextView
             android:id="@+id/tv_pillDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
             android:text="How often?"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pillAmount"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="91dp" />
 
         <CheckBox
             android:id="@+id/cb_Monday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-35dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:onClick="onCheckboxClicked"
-            android:text="Monday's" />
+            android:text="Monday's"
+            app:layout_constraintStart_toEndOf="@+id/tv_pillDate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pillAmount"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="91dp" />
 
         <CheckBox
             android:id="@+id/cb_Tuesday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="32dp"
             android:onClick="onCheckboxClicked"
-            android:text="Tuesday's" />
+            android:text="Tuesday's"
+            app:layout_constraintStart_toStartOf="@+id/cb_Monday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Monday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="94dp" />
 
         <CheckBox
             android:id="@+id/cb_Wednesday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="32dp"
             android:onClick="onCheckboxClicked"
-            android:text="Wednesday's" />
+            android:text="Wednesday's"
+            app:layout_constraintStart_toStartOf="@+id/cb_Tuesday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Tuesday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="114dp" />
 
         <CheckBox
             android:id="@+id/cb_Thursday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="32dp"
             android:onClick="onCheckboxClicked"
-            android:text="Thursday's" />
+            android:text="Thursday's"
+            app:layout_constraintStart_toStartOf="@+id/cb_Wednesday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Wednesday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="99dp" />
 
         <CheckBox
             android:id="@+id/cb_Friday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="240dp"
-            android:layout_marginTop="-148dp"
+            android:layout_marginStart="32dp"
             android:onClick="onCheckboxClicked"
-            android:text="Friday's" />
+            android:text="Friday's"
+            app:layout_constraintStart_toEndOf="@+id/cb_Monday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Monday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="80dp" />
 
         <CheckBox
             android:id="@+id/cb_Saturday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="240dp"
-            android:layout_marginTop="-15dp"
             android:onClick="onCheckboxClicked"
-            android:text="Saturday's" />
+            android:text="Saturday's"
+            app:layout_constraintStart_toStartOf="@+id/cb_Friday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Tuesday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="97dp" />
 
         <CheckBox
             android:id="@+id/cb_Sunday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="240dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="32dp"
             android:onClick="onCheckboxClicked"
-            android:text="Sunday's" />
+            android:text="Sunday's"
+            app:layout_constraintStart_toStartOf="@+id/cb_Saturday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Saturday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="87dp" />
 
         <CheckBox
             android:id="@+id/cb_Everyday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="240dp"
-            android:layout_marginTop="-15dp"
+            android:layout_marginTop="32dp"
             android:onClick="onCheckboxClicked"
-            android:text="Everyday" />
+            android:text="Everyday"
+            app:layout_constraintStart_toStartOf="@+id/cb_Sunday"
+            app:layout_constraintTop_toTopOf="@+id/cb_Sunday"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="89dp" />
 
         <TextView
             android:id="@+id/tv_Time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
             android:text="What time?"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cb_Thursday"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="90dp" />
 
         <EditText
             android:id="@+id/et_Time"
-            android:layout_width="210dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="64dp"
             android:background="@drawable/edit_text_border"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_Time"
+            app:layout_constraintTop_toTopOf="@+id/tv_Time"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="210dp" />
 
         <TextView
             android:id="@+id/tv_Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:text="Description:"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Time"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="94dp" />
 
         <EditText
             android:id="@+id/et_Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="-25dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="Describe the pill here."
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
-            android:singleLine="false" />
+            android:singleLine="false"
+            app:layout_constraintStart_toStartOf="@+id/et_Time"
+            app:layout_constraintTop_toBottomOf="@+id/et_Time"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="210dp" />
 
-        <Button
-            android:id="@+id/btn_Save"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="170dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#00BCD4"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Description">
 
-            android:text="Save" />
-
-        <Button
-            android:id="@+id/btn_Back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-48dp"
-            android:backgroundTint="#00BCD4"
-            android:text="Back" />
+            <Button
+                android:id="@+id/btn_Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00BCD4"
 
 
-    </LinearLayout>
+                android:text="Save"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="88dp"
+                tools:layout_editor_absoluteX="260dp"
+                tools:layout_editor_absoluteY="619dp" />
+
+            <Button
+                android:id="@+id/btn_Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="0dp"
+                android:backgroundTint="#00BCD4"
+                android:text="Back"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="88dp" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </ScrollView>
