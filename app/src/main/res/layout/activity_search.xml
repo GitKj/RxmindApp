@@ -74,7 +74,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
-            android:hint="enter drug name"
+            android:text="Eszopiclone"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -102,9 +102,9 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
-            android:hint="enter drug name"
-            android:inputType="textPersonName"
+            android:inputType="text|textCapCharacters"
             android:paddingLeft="10dp"
+            android:text="BLUE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/tv_DrugName"
@@ -131,7 +131,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
-            android:hint="enter drug name"
+            android:text=""
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,16 +160,16 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_border"
             android:ems="10"
-            android:hint="enter drug name"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
+            android:text="93"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/tv_DrugName"
             app:layout_constraintTop_toBottomOf="@+id/et_drugname" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -188,7 +188,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/ll_ButtonTray"
-            app:layout_constraintTop_toBottomOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/btn_search"
             tools:layout_editor_absoluteX="16dp">
 
         </ListView>
