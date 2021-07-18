@@ -5,6 +5,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+//Necessary class for API parsing, however does not directly provide functionality.
 @Generated("jsonschema2pojo")
 public class APIResponse {
 

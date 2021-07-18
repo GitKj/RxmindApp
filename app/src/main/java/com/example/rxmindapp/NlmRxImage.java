@@ -5,6 +5,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+//class implementing the individual search results from the API response.
 @Generated("jsonschema2pojo")
 public class NlmRxImage {
 

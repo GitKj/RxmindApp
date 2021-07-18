@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+//modeled after ReminderAdapter.java
 public class ResultAdapter extends BaseAdapter {
 
     public ArrayList<NlmRxImage> results;

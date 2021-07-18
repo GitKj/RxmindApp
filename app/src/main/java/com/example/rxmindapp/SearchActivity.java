@@ -75,19 +75,24 @@ public class SearchActivity extends AppCompatActivity {
         imprint = (EditText) findViewById(R.id.et_drugimprint);
         color = (EditText) findViewById(R.id.et_drugcolor);
         shape = (EditText) findViewById(R.id.et_drugshape);
+
         searchButton = (Button) findViewById(R.id.btn_search);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //gather search parameters
                 String pillName = name.getText().toString();
                 String pillColor = color.getText().toString();
                 String pillImprint = imprint.getText().toString();
 
+                //input validation
                 if (pillColor.equals("") || pillName.equals("") || pillImprint.equals(""))
                 {
                     Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                //building request string from parameter
                 StringBuilder sb = new StringBuilder();
                 sb.append("name=");
                 sb.append(name.getText());
@@ -100,9 +105,12 @@ public class SearchActivity extends AppCompatActivity {
                 String requestString = sb.toString();
 
                 Log.i("req", "requestString = " + requestString);
+
+                //make API request
                 makeRequest(requestString);
 
                 Log.i("res", "Size: " + searchResults.size());
+                //set search results to display adapter on listview lv
                 ResultAdapter resultAdapter = new ResultAdapter(searchResults, SearchActivity.this);
                 lv.setAdapter(resultAdapter);
             }
@@ -110,9 +118,11 @@ public class SearchActivity extends AppCompatActivity {
 
         buttonTray = (LinearLayout) findViewById(R.id.ll_ButtonTray);
         skip = findViewById(R.id.btn_Skip);
+        //enables dual use of SearchActivity by hiding unnecessary UI elements when not creating
+        //new UserReminder
         creating = (Boolean) getIntent().getBooleanExtra("create", false);
         if(creating){
-
+            //if creating new UserReminder, enable skip button
             skip.setText("Skip Search");
             skip.setId(View.generateViewId());
             skip.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +131,7 @@ public class SearchActivity extends AppCompatActivity {
                     SkipToCreateReminder();
                 }
             });
-        } else skip.setVisibility(View.INVISIBLE);
+        } else skip.setVisibility(View.INVISIBLE); //else disable
 
         back = (Button) findViewById(R.id.btn_Back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -160,7 +170,6 @@ public class SearchActivity extends AppCompatActivity {
 
                 NlmRxImage result = searchResults.get(position);
 
-
                 Intent goToCreateActivity = new Intent(this, CreateReminder.class);
                 goToCreateActivity.putExtra("name", result.getName());
                 goToCreateActivity.putExtra("imprint", imprint.getText());
@@ -177,23 +186,29 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void makeRequest(String params){
-        // https://financialmodelingprep.com/api/v3/quote/AAPL?apikey=demo
+        // builds request URL
         String input = "rxnav?" + params;
 
         Log.i("req", "full request = " + input);
 
+        //uses Fast Android Networking Library to send request
         ANRequest req = AndroidNetworking.get("https://rximage.nlm.nih.gov/api/rximage/1/{resource}")
                 .addPathParameter("resource", input)
                 .setPriority(Priority.LOW)
                 .build();
+        //returns request as java library JSONObject
         req.getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
+                //convert from java library JSONObject to string
                 String jobj = response.toString();
+                //convert string into Gson library JsonObject, and parses using custom APIResponse deserializer
                 final Gson gson = new GsonBuilder().registerTypeAdapter(APIResponse.class, new APIResponseDeserializer()).create();
                 subject = gson.fromJson(jobj, APIResponse.class);
 
+                //set searchResults equal to feedback
                 searchResults = new ArrayList<>(subject.getNlmRxImages());
+                //if no results found then annouce failure
                 if(searchResults.size() == 0) Toast.makeText(getApplicationContext(), "No results found", Toast.LENGTH_SHORT).show();
             }
 
