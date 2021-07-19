@@ -6,7 +6,7 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 # Features:
 - [x] Ability to create an account and log in
 - [x] Add, Delete, and Update reminders/medications
-- [ ] Ability to search a pill and see the description using the FDA API
+- [x] Ability to search a pill and see the description using the FDA API
 - [x] Ability to see a calendar view of upcoming medication reminders
 
 
@@ -59,8 +59,11 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 --------------------------------------------------------------------------------------------------------
 
+Help with Notification:
 
-
+1. https://stackoverflow.com/questions/36008785/notification-on-specific-day-on-android
+2. (6min video) https://www.youtube.com/watch?v=nl-dheVpt8o
+3. https://learntodroid.com/how-to-create-a-simple-alarm-clock-app-in-android/
 
 
 
