@@ -1,140 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_PN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="32dp"
         android:fontFamily="sans-serif-black"
         android:text="Advil"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_PD"
-        android:layout_width="200dp"
+        android:layout_width="194dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="32dp"
         android:fontFamily="sans-serif-condensed"
         android:paddingBottom="10dp"
         android:text="It's small and blue."
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PN" />
 
     <TextView
         android:id="@+id/tv_PA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="38dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:paddingBottom="10dp"
         android:text="Take 6"
         android:textColor="#514F4F"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_row_clock"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
 
     <TextView
         android:id="@+id/tv_PT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="-25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:text="4:45AM"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_row_clock"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="-28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_PT"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD"
         app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     <TextView
         android:id="@+id/tv_Monday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="-32dp"
+        android:layout_marginTop="20dp"
         android:text="M"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
     <TextView
         android:id="@+id/tv_Tues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="207dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="T"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Monday"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
     <TextView
         android:id="@+id/tv_Wed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="W"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Tues"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
     <TextView
         android:id="@+id/tv_TH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="237dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="TH"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Wed"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
     <TextView
         android:id="@+id/tv_Fri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="261dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="F"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_TH"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
     <TextView
         android:id="@+id/tv_Sa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="273dp"
-        android:layout_marginTop="-19dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="Sa"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Fri"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
+
 
     <TextView
         android:id="@+id/tv_Su"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="294dp"
-        android:layout_marginTop="-19dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text="Su"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Sa"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/iv_PillImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PA"
+        app:srcCompat="@drawable/pill" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

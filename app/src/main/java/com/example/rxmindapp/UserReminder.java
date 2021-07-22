@@ -11,6 +11,7 @@ public class UserReminder implements Serializable {
     private String pillName;
     private String pillDescription;
     private String pillQuantity; // how many pills they need to take at time/day
+    private String pillImageURL = "";
 
     //private ArrayList<String> pillDays;
     private String pillTime;
@@ -55,7 +56,10 @@ public class UserReminder implements Serializable {
     public void setPillDescription(String pillDescription) {
         this.pillDescription = pillDescription;
     }
-    
+
+    public String getPillImageURL(){return pillImageURL;}
+
+    public void setPillImageURL(String pillImageURL){this.pillImageURL = pillImageURL;}
 
     public String getPillTime() {
         return pillTime;

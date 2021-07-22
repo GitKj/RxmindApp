@@ -149,6 +149,22 @@ public class CreateReminder extends AppCompatActivity {
             updating = true;
             updateReminder();
         }
+
+        if(getIntent().getStringExtra("name") != null){
+            et_pill.setText(getIntent().getStringExtra("name"));
+        }
+        StringBuilder sb = new StringBuilder();
+
+        if(getIntent().getStringExtra("imprint") != null){
+            sb.append(" Imprint: " + getIntent().getStringExtra("imprint"));
+        }
+        if(getIntent().getStringExtra("size") != null){
+            sb.append(" Size: " + getIntent().getStringExtra("size"));
+        }
+        if(getIntent().getStringExtra("color") != null){
+            sb.append(" Color: " + getIntent().getStringExtra("color"));
+        }
+        et_description.setText(sb.toString());
     }
 
     public void onCheckboxClicked(View view)
@@ -218,8 +234,7 @@ public class CreateReminder extends AppCompatActivity {
         String description = et_description.getText().toString();
 
         //Toast.makeText(this, "Testing null/empty: " + pillName, Toast.LENGTH_SHORT).show();
-        if (pillAmnt == null || pillName == null || nickname == null || timePicked == null || description == null ||
-        pillName.equals("") || nickname.equals(""))
+        if (pillAmnt.equals("") || pillName.equals("") || nickname.equals("") || timePicked == null || description.equals(""))
         {
             Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
             return;
@@ -240,6 +255,7 @@ public class CreateReminder extends AppCompatActivity {
                     userReminder.setPillTime(timePicked);
                     userReminder.setPillDescription(description);
                     userReminder.setPillNickname(nickname);
+                    if(getIntent().getStringExtra("url") != null) userReminder.setPillImageURL(getIntent().getStringExtra("url"));
 
 
                     if (monday) {
@@ -272,6 +288,9 @@ public class CreateReminder extends AppCompatActivity {
                         ref.child(nickname).setValue(userReminder);
                     }
                     Toast.makeText(getApplicationContext(), "Saved successfully!", Toast.LENGTH_SHORT).show();
+                    Intent goToMainActivity = new Intent(CreateReminder.this, MainActivity.class);
+                    goToMainActivity.putExtra("currUser", currUser);
+                    startActivity(goToMainActivity);
                     finish();
                 }
 
@@ -327,8 +346,7 @@ public class CreateReminder extends AppCompatActivity {
                 String pillName = et_pill.getText().toString();
                 String description = et_description.getText().toString();
 
-                if (pillAmnt == null || pillName == null ||  timePicked == null || description == null ||
-                        pillName.equals("") )
+                if (pillAmnt.equals("") || pillName.equals("") ||  timePicked == null || description.equals(""))
                 {
                     Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
                     return;
@@ -374,6 +392,9 @@ public class CreateReminder extends AppCompatActivity {
                             ref.child(user.getPillNickname()).child("takeOnSun").setValue(true);
                         }
                         Toast.makeText(getApplicationContext(), "Saved successfully!", Toast.LENGTH_SHORT).show();
+                        Intent goToMainActivity = new Intent(CreateReminder.this, MainActivity.class);
+                        goToMainActivity.putExtra("currUser", currUser);
+                        startActivity(goToMainActivity);
                         finish();
                     }
 
@@ -391,6 +412,7 @@ public class CreateReminder extends AppCompatActivity {
     public void goToMainActivity()
     {
         Intent goToMainActivity = new Intent(this, MainActivity.class);
+        goToMainActivity.putExtra("currUser", currUser);
         startActivity(goToMainActivity);
         finish();
     }

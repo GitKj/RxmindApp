@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".SearchActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/baselayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B7E4EA"
+        android:orientation="vertical"
+        tools:context=".SearchActivity">
+
+
+    <LinearLayout
+        android:id="@+id/ll_ButtonTray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="#00BCD4"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/btn_Skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="32dp"
+            android:backgroundTint="#00BCD4"
+            android:text="Skip" />
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_SearchTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="Search for Pill"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:typeface="monospace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_DrugName"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Drug Name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_SearchTitle"
+            tools:layout_conversion_absoluteHeight="24dp" />
+
+        <EditText
+            android:id="@+id/et_drugname"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+            android:text="Eszopiclone"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_DrugName"
+            app:layout_constraintTop_toBottomOf="@+id/tv_SearchTitle" />
+
+        <TextView
+            android:id="@+id/tv_DrugColor"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Pill Color"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_DrugName"
+            tools:layout_conversion_absoluteHeight="24dp" />
+
+        <EditText
+            android:id="@+id/et_drugcolor"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+            android:inputType="text|textCapCharacters"
+            android:paddingLeft="10dp"
+            android:text="BLUE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_DrugName"
+            app:layout_constraintTop_toBottomOf="@+id/et_drugname" />
+
+        <TextView
+            android:id="@+id/tv_DrugShape"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Pill Shape"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_DrugColor"
+            tools:layout_conversion_absoluteHeight="24dp" />
+
+        <EditText
+            android:id="@+id/et_drugshape"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+            android:text=""
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_DrugName"
+            app:layout_constraintTop_toBottomOf="@+id/et_drugname" />
+
+        <TextView
+            android:id="@+id/tv_DrugImprint"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Pill Imprint"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_DrugShape"
+            tools:layout_conversion_absoluteHeight="24dp" />
+
+        <EditText
+            android:id="@+id/et_drugimprint"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_border"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:text="93"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_DrugName"
+            app:layout_constraintTop_toBottomOf="@+id/et_drugname" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_drugimprint" />
+
+
+        <ListView
+            android:id="@+id/list_possible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/ll_ButtonTray"
+            app:layout_constraintTop_toBottomOf="@+id/btn_search"
+            tools:layout_editor_absoluteX="16dp">
+
+        </ListView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
