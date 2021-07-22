@@ -13,7 +13,7 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 # Current Progress of the app
 
-**V5 (7/15/2021)** By: Kajoyrie Purcell
+**V5 (7/15/2021)** By: Jon Francisco
 1. Enabled pill search functionality
 2. Reformatted UI for consistency
   
