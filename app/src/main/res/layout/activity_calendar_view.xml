@@ -28,4 +28,15 @@
         android:layout_height="wrap_content">
     </CalendarView>
 
+    <Button
+        android:id="@+id/btn_calBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="143dp"
+        android:layout_marginBottom="213dp"
+        android:backgroundTint="#00BCD4"
+        android:text="Back" />
+
 </RelativeLayout>

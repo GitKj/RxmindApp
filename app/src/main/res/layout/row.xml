@@ -160,6 +160,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_Sa"
         app:layout_constraintTop_toBottomOf="@+id/tv_PD" />
 
+    <!--
     <ImageView
         android:id="@+id/iv_PillImage"
         android:layout_width="64dp"
@@ -170,7 +171,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_PA"
-        app:srcCompat="@drawable/pill" />
+        app:srcCompat="@drawable/pill" /> -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

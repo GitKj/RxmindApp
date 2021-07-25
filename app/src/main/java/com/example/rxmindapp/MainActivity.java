@@ -3,7 +3,12 @@ package com.example.rxmindapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -31,10 +36,10 @@ import java.util.ArrayList;
    2. Work on error handling and also limiting # of characters allowed when user is creating a new reminder
    3. Add some colors to the list view
    4. Add better icons and things
-   5. Add a back button to the calendar view
 
 @CURRENT BUGS:
 
+    1. Fix up the notification manager to only work on specified days (right now it just notifies every day)
 
 
  */

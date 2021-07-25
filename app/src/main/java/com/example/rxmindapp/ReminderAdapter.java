@@ -68,7 +68,7 @@ public class ReminderAdapter extends BaseAdapter {
             holder.fri = (TextView) convertView.findViewById(R.id.tv_Fri);
             holder.sat = (TextView) convertView.findViewById(R.id.tv_Sa);
             holder.sun = (TextView) convertView.findViewById(R.id.tv_Su);
-            holder.pillImage = (ImageView) convertView.findViewById(R.id.iv_PillImage);
+            //holder.pillImage = (ImageView) convertView.findViewById(R.id.iv_PillImage);
 
             convertView.setTag(holder);
         }

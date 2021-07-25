@@ -3,10 +3,16 @@ package com.example.rxmindapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,8 +29,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class CreateReminder extends AppCompatActivity {
 
@@ -48,6 +57,10 @@ public class CreateReminder extends AppCompatActivity {
     String amPM;
 
     String timePicked;
+    int hourPicked;
+    int minutePicked;
+
+
     String currUser;
 
     FirebaseDatabase database;
@@ -73,6 +86,7 @@ public class CreateReminder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_reminder);
 
+        createNotificationChannel();
 
         user = (UserReminder) getIntent().getSerializableExtra("update");
         currUser = (String) getIntent().getStringExtra("currUser");
@@ -126,6 +140,8 @@ public class CreateReminder extends AppCompatActivity {
 
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        hourPicked = hourOfDay;
+                        minutePicked = minute;
                         if (hourOfDay >= 12)
                         {
                             hourOfDay -= 12;
@@ -165,6 +181,8 @@ public class CreateReminder extends AppCompatActivity {
             sb.append(" Color: " + getIntent().getStringExtra("color"));
         }
         et_description.setText(sb.toString());
+
+
     }
 
     public void onCheckboxClicked(View view)
@@ -233,7 +251,6 @@ public class CreateReminder extends AppCompatActivity {
         String nickname = et_nickname.getText().toString();
         String description = et_description.getText().toString();
 
-        //Toast.makeText(this, "Testing null/empty: " + pillName, Toast.LENGTH_SHORT).show();
         if (pillAmnt.equals("") || pillName.equals("") || nickname.equals("") || timePicked == null || description.equals(""))
         {
             Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
@@ -287,7 +304,51 @@ public class CreateReminder extends AppCompatActivity {
                         userReminder.setTakeOnSun(true);
                         ref.child(nickname).setValue(userReminder);
                     }
-                    Toast.makeText(getApplicationContext(), "Saved successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Saved reminder successfully!", Toast.LENGTH_SHORT).show();
+
+
+                    // --------------------- Settings for notifications ----------------------------------
+
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(Calendar.HOUR_OF_DAY, hourPicked);
+                    calendar.set(Calendar.MINUTE, minutePicked - 1);
+                    calendar.set(Calendar.SECOND, 0);
+                    calendar.set(Calendar.MILLISECOND, 0);
+
+                    if (calendar.getTime().compareTo(new Date()) < 0)
+                    {
+                        Log.d("CALENDAR", "incremented day");
+                        calendar.add(Calendar.DAY_OF_MONTH, 1);
+                    }
+
+                    Log.d("CALENDAR", "hour picked: " + hourPicked);
+                    Log.d("CALENDAR", "minute picked: " + minutePicked);
+                    Log.d("CALENDAR", "day scheduled: " + calendar.get(Calendar.DAY_OF_WEEK));
+                    Intent intent = new Intent(CreateReminder.this, NotificationReceiver.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(CreateReminder.this, 0, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                    if (alarmManager != null)
+                    {
+                        Log.d("CALENDAR", "ALARM NOT NULL");
+                        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+                    }
+                    else
+                    {
+                        String piNull = "false";
+                        if (pendingIntent == null) {piNull = "true";}
+                        Log.d("CALENDAR", "ALARM MANAGER IS NULL");
+                        Log.d("CALENDAR", "PENDING INTENT: " + piNull);
+                    }
+
+
+
+                    // -------------------- END notification settings ------------------------------------
+
+
+
+
+
                     Intent goToMainActivity = new Intent(CreateReminder.this, MainActivity.class);
                     goToMainActivity.putExtra("currUser", currUser);
                     startActivity(goToMainActivity);
@@ -408,6 +469,22 @@ public class CreateReminder extends AppCompatActivity {
 
     }
 
+    private void createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            CharSequence name = "RxmindChannel";
+            String description = "Channel for Rxmind notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("1001", name, importance);
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+            Log.d("CALENDAR", "NOTIFICATION CHANNEL");
+        }
+
+    }
 
     public void goToMainActivity()
     {

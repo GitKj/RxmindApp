@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
@@ -13,13 +15,25 @@ import java.util.Calendar;
 public class calendarView extends AppCompatActivity {
 
     CalendarView cv;
-
+    Button back;
     String currUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_view);
+
+        back = findViewById(R.id.btn_calBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent goToMainActivity = new Intent(calendarView.this, MainActivity.class);
+                goToMainActivity.putExtra("currUser", currUser);
+                startActivity(goToMainActivity);
+                finish();
+            }
+        });
 
         currUser = (String) getIntent().getStringExtra("currUser");
 
