@@ -13,6 +13,19 @@ Rxmind is a fast way to receive reminders directly on your phone about any medic
 
 # Current Progress of the app
 
+**V7 (7/25/2021)** By: Kajoyrie Purcell
+1. Fixed notification related bugs
+2. Adjusted UI to be more inviting and user friendly. Made fonts, sizes, and colors more consistent. Added better icons.
+
+@TODO for V8
+1. Clean up code and classes to be more readable, add comments
+2. Fix any bugs
+
+<img src="https://github.com/GitKj/RxmindApp/blob/master/rxmind_V7.gif" width=350>
+
+
+--------------------------------------------------------------------------------------------------------
+
 **V6 (7/25/2021)** By: Kajoyrie Purcell
 1. Added basic notification feature at specified day/time
 
