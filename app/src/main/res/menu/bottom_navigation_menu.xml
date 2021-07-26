@@ -18,7 +18,7 @@
         android:id="@+id/bnb_calendar"
         android:enabled="true"
         app:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:icon="@drawable/calendar_icon_v2"
         android:title=""
         android:visible="true"
         android:onClick="onItemSelected">
@@ -28,7 +28,7 @@
         android:id="@+id/bnb_Search"
         android:enabled="true"
         app:showAsAction="always"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/search_icon_v3"
         android:title=""
         android:visible="true"
         android:onClick="onItemSelected"/>

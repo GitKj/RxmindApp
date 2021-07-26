@@ -91,8 +91,6 @@ public class CreateReminder extends AppCompatActivity {
         user = (UserReminder) getIntent().getSerializableExtra("update");
         currUser = (String) getIntent().getStringExtra("currUser");
 
-        // if this is not null, then we know we're updating an already existing reminder
-
         database = FirebaseDatabase.getInstance();
         ref = database.getReference().child("Users").child(currUser).child("Reminders");
 
@@ -251,9 +249,15 @@ public class CreateReminder extends AppCompatActivity {
         String nickname = et_nickname.getText().toString();
         String description = et_description.getText().toString();
 
+
         if (pillAmnt.equals("") || pillName.equals("") || nickname.equals("") || timePicked == null || description.equals(""))
         {
             Toast.makeText(getApplicationContext(), "Please complete all fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (pillName.length() > 15 || nickname.length() > 20 || description.length() > 20)
+        {
+            Toast.makeText(getApplicationContext(), "Fields must be 20 characters or less.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -267,6 +271,8 @@ public class CreateReminder extends AppCompatActivity {
                 } else if (snapshot.getValue() == null || updating)
                 {
 
+                    Intent intent = new Intent(CreateReminder.this, NotificationReceiver.class);
+
                     userReminder.setPillName(pillName);
                     userReminder.setPillQuantity(pillAmnt);
                     userReminder.setPillTime(timePicked);
@@ -276,42 +282,48 @@ public class CreateReminder extends AppCompatActivity {
 
 
                     if (monday) {
+                        intent.putExtra("monday", true);
                         userReminder.setTakeOnMonday(true);
                         ref.child(nickname).setValue(userReminder);
 
                     }
                     if (tuesday) {
+                        intent.putExtra("tuesday", true);
                         userReminder.setTakeOnTuesday(true);
                         ref.child(nickname).setValue(userReminder);
                     }
                     if (wednesday) {
+                        intent.putExtra("wednesday", true);
                         userReminder.setTakeOnWednesday(true);
                         ref.child(nickname).setValue(userReminder);
                     }
                     if (thursday) {
+                        intent.putExtra("thursday", true);
                         userReminder.setTakeOnThursday(true);
                         ref.child(nickname).setValue(userReminder);
                     }
                     if (friday) {
+                        intent.putExtra("friday", true);
                         userReminder.setTakeOnFriday(true);
                         ref.child(nickname).setValue(userReminder);
                     }
                     if (sat) {
+                        intent.putExtra("sat", true);
                         userReminder.setTakeOnSat(true);
                         ref.child(nickname).setValue(userReminder);
                     }
                     if (sun) {
+                        intent.putExtra("sun", true);
                         userReminder.setTakeOnSun(true);
                         ref.child(nickname).setValue(userReminder);
                     }
-                    Toast.makeText(getApplicationContext(), "Saved reminder successfully!", Toast.LENGTH_SHORT).show();
-
 
                     // --------------------- Settings for notifications ----------------------------------
 
                     Calendar calendar = Calendar.getInstance();
+
                     calendar.set(Calendar.HOUR_OF_DAY, hourPicked);
-                    calendar.set(Calendar.MINUTE, minutePicked - 1);
+                    calendar.set(Calendar.MINUTE, minutePicked);
                     calendar.set(Calendar.SECOND, 0);
                     calendar.set(Calendar.MILLISECOND, 0);
 
@@ -323,8 +335,9 @@ public class CreateReminder extends AppCompatActivity {
 
                     Log.d("CALENDAR", "hour picked: " + hourPicked);
                     Log.d("CALENDAR", "minute picked: " + minutePicked);
-                    Log.d("CALENDAR", "day scheduled: " + calendar.get(Calendar.DAY_OF_WEEK));
-                    Intent intent = new Intent(CreateReminder.this, NotificationReceiver.class);
+
+
+                    // Setting up an intent to be activated at the picked days and time
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(CreateReminder.this, 0, intent, 0);
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
@@ -335,10 +348,7 @@ public class CreateReminder extends AppCompatActivity {
                     }
                     else
                     {
-                        String piNull = "false";
-                        if (pendingIntent == null) {piNull = "true";}
                         Log.d("CALENDAR", "ALARM MANAGER IS NULL");
-                        Log.d("CALENDAR", "PENDING INTENT: " + piNull);
                     }
 
 
@@ -346,7 +356,7 @@ public class CreateReminder extends AppCompatActivity {
                     // -------------------- END notification settings ------------------------------------
 
 
-
+                    Toast.makeText(getApplicationContext(), "Saved reminder successfully!", Toast.LENGTH_SHORT).show();
 
 
                     Intent goToMainActivity = new Intent(CreateReminder.this, MainActivity.class);

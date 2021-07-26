@@ -14,67 +14,101 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Calendar;
+import java.util.HashSet;
+
+// Class needed to send out notifications
 public class NotificationReceiver extends BroadcastReceiver {
+
+    HashSet<Integer> daysOfWeek;
+
+    private boolean monday;
+    private boolean tuesday;
+    private boolean wednesday;
+    private boolean thursday;
+    private boolean friday;
+    private boolean sat;
+    private boolean sun;
+
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //NotificationHelper notificationHelper = new NotificationHelper(context);
-        //notificationHelper.createNotification();
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1001");
-        mBuilder.setSmallIcon(R.drawable.common_google_signin_btn_icon_dark);
-        mBuilder.setContentTitle("Time to take your medication!");
-        mBuilder.setContentText("Open the app and see which medications to take!");
-        mBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        daysOfWeek = new HashSet<>();
 
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+        monday = intent.getBooleanExtra("monday", false);
+        tuesday = intent.getBooleanExtra("tuesday", false);
+        wednesday = intent.getBooleanExtra("wednesday", false);
+        thursday = intent.getBooleanExtra("thursday", false);
+        friday = intent.getBooleanExtra("friday", false);
+        sat = intent.getBooleanExtra("sat", false);
+        sun = intent.getBooleanExtra("sun", false);
 
-        notificationManagerCompat.notify(200, mBuilder.build());
+        Log.d("ALARMSCHEDULE", "SCHEDULED MONDAY: " + monday);
+        Log.d("ALARMSCHEDULE", "SCHEDULED TUESDAY: " + tuesday);
+        Log.d("ALARMSCHEDULE", "SCHEDULED WED: " + wednesday);
+        Log.d("ALARMSCHEDULE", "SCHEDULED THURS: " + thursday);
+        Log.d("ALARMSCHEDULE", "SCHEDULED FRI: " + friday);
+        Log.d("ALARMSCHEDULE", "SCHEDULED SAT: " + sat);
+        Log.d("ALARMSCHEDULE", "SCHEDULED SUN: " + sun);
+
+
+        if (sun)
+        {
+            daysOfWeek.add(1);
+        }
+
+        if (monday)
+        {
+            daysOfWeek.add(2);
+        }
+        if (tuesday)
+        {
+            daysOfWeek.add(3);
+        }
+        if (wednesday)
+        {
+            daysOfWeek.add(4);
+        }
+        if (thursday)
+        {
+            daysOfWeek.add(5);
+        }
+        if (friday)
+        {
+            daysOfWeek.add(6);
+        }
+        if (sat)
+        {
+            daysOfWeek.add(7);
+        }
+
+
+
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        if (daysOfWeek.contains(day))
+        {
+            // Building the notification, the notification only triggers if its for the scheduled days
+            Log.d("NOTIFICATIONRECIEVER", "ALARM SCHEDULED FOR TODAY");
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1001");
+            mBuilder.setSmallIcon(R.drawable.common_google_signin_btn_icon_dark);
+            mBuilder.setContentTitle("Time to take your medication!");
+            mBuilder.setContentText("Open the app and see which medications to take!");
+            mBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+
+            notificationManagerCompat.notify(200, mBuilder.build());
+        }
+        else
+        {
+            Log.d("NOTIFICATIONRECIEVER", "DAY NOT SCHEDULED FOR ALARM");
+        }
+
         Log.d("NOTIFICATIONRECIEVER", "MADE IT TO END OF onReceive");
 
     }
 
-    // temporary class, will be deleting in the future
-    class NotificationHelper
-    {
-        private Context mContext;
-        private static final String NOTIFCATION_CHANNEL_ID = "1001";
-
-        NotificationHelper(Context context)
-        {
-            mContext = context;
-        }
-
-        void createNotification()
-        {
-            Intent intent = new Intent(mContext, MainActivity.class);
-
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            PendingIntent resultPendingIntent = PendingIntent.getActivity(mContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mContext, NOTIFCATION_CHANNEL_ID);
-            mBuilder.setContentTitle("Time to take your medication!");
-            mBuilder.setContentText("Open the app and see which medications to take!");
-            mBuilder.setAutoCancel(false);
-            mBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
-            mBuilder.setContentIntent(resultPendingIntent);
-
-            NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            {
-                int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                NotificationChannel notificationChannel = new NotificationChannel(NOTIFCATION_CHANNEL_ID, "NotifyUser", importance);
-                notificationChannel.enableLights(true);
-                notificationChannel.setLightColor(Color.BLUE);
-                notificationChannel.enableVibration(true);
-                notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
-                assert notificationManager != null;
-                mBuilder.setChannelId(NOTIFCATION_CHANNEL_ID);
-                notificationManager.createNotificationChannel(notificationChannel);
-            }
-            assert notificationManager != null;
-            notificationManager.notify(0, mBuilder.build());
-        }
-
-    }
 }

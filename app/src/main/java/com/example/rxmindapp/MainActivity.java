@@ -32,14 +32,10 @@ import java.util.ArrayList;
 /*
 @TODO:
 
-   1. Work on calling FDA API to get simple pill information.
-   2. Work on error handling and also limiting # of characters allowed when user is creating a new reminder
-   3. Add some colors to the list view
-   4. Add better icons and things
+   1. Just clean up code and add comments
 
 @CURRENT BUGS:
 
-    1. Fix up the notification manager to only work on specified days (right now it just notifies every day)
 
 
  */
@@ -48,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     FloatingActionButton fab;
     BottomAppBar bottomAppBar;
-    private User currentUser;
 
     private String currUsername;
     FirebaseDatabase database;
@@ -147,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Delete functionality for Firebase:
                 ref.child("Reminders").child(tempNickname).setValue(null);
-                Toast.makeText(this, "Successfully deleted!" + tempNickname , Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Successfully deleted!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Toast.makeText(this, "Error occurred when selecting.", Toast.LENGTH_SHORT).show();
@@ -168,10 +163,9 @@ public class MainActivity extends AppCompatActivity {
     {
         switch(item.getItemId()) {
 
-            // When ready, we can change these toasts so that when user clicks corresponding
-            // menu items, it switches to that activity.
+            // when user clicks corresponding menu items, it switches to that activity.
             case R.id.bnb_list:
-                Toast.makeText(this, "List tab checked.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "List tab checked.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bnb_calendar:
 
@@ -181,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.bnb_Search:
-                //Toast.makeText(this, "Search tab checked.", Toast.LENGTH_SHORT).show();
+
                 Intent goToSearchActivity = new Intent(this, SearchActivity.class);
                 goToSearchActivity.putExtra("currUser", currUsername);
                 goToSearchActivity.putExtra("create", false);
